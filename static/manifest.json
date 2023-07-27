@@ -1,36 +1,41 @@
 {
-  "name": "chrome-extension-webpack",
-  "description": "My basic Chrome extension",
-  "version": "0.1.0",
+  "name": "Replace Image Locally",
+  "description": "Replace the Image in an <img> with local file",
+  "version": "3.0.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "serviceWorker.js"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["contentScript.js"]
+      "matches": ["*://*/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
     }
   ],
-  "permissions": ["storage", "scripting"],
+  "permissions": ["storage", "scripting", "contextMenus", "activeTab", "tabs"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
   },
   "action": {
-    "default_title": "My basic Chrome extension",
+    "default_title": "Replace the Image in an <img> with local file",
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "/icons/16x.png",
-      "32": "/icons/32x.png",
-      "48": "/icons/48x.png",
-      "128": "/icons/128x.png"
+      "16": "/icons/icon16.png",
+      "32": "/icons/icon32.png",
+      "48": "/icons/icon48.png",
+      "128": "/icons/icon128.png"
     }
   },
   "icons": {
-    "16": "/icons/16x.png",
-    "32": "/icons/32x.png",
-    "48": "/icons/48x.png",
-    "128": "/icons/128x.png"
+    "16": "/icons/icon16.png",
+    "32": "/icons/icon32.png",
+    "48": "/icons/icon48.png",
+    "128": "/icons/icon128.png"
   }
 }
